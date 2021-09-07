@@ -7,6 +7,7 @@
 // @match        https://review.crto.in/
 // @icon         https://www.google.com/s2/favicons?domain=crto.in
 // @grant        none
+// @license      Apache-2.0
 // @noframes
 // ==/UserScript==
 

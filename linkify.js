@@ -35,34 +35,7 @@
     const regex = /\b([a-f0-9]{6,})\b/g;
     const link = /<a href/gi;
 
-    function updateNodes(nodes) {
-        for(var i=0; i < nodes.length; i++) {
-            var node = nodes[i];
-            if (node instanceof Text) {
-                if (!node.textContent.match(link)) {
-                    console.log(node.constructor.name);
-
-                    var linkedElement = document.createElement();
-                    linkedElement.innerHTML = node.textContent.replaceAll(regex, linkify);
-                    if (node.textContent != linkedElement.innerHTML) {
-                        node.replaceWith(linkedElement)
-                    }
-                }
-            }
-        }
-    }
-
-
-    var observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            updateNodes(mutation.addedNodes);
-        })
-    });
-
-
     onCommitBoxAvailable(function(element) {
-        observer.observe(element, {childList: true, subtree: true});
-        // to have the observer pattern working, we need to make a fake modification 🤦‍♂️
-        element.innerText = element.innerText.replaceAll("a", "a");
+      element.innerHTML = element.innerHTML.replaceAll(regex, linkify)
     })
 })();

@@ -1,13 +1,18 @@
 // ==UserScript==
 // @name         Commit linker
 // @namespace    http://tampermonkey.net/
+// @copyright    2021, Grégoire Seux
 // @version      0.1
+// @homepage     https://github.com/kamaradclimber/userscript-gerrit-linkifyer
 // @description  linkify commits in gerrit commit message
 // @author       g.seux
+// @supportURL   https://github.com/kamaradclimber/userscript-gerrit-linkifyer
+// @contributionURL   https://github.com/kamaradclimber/userscript-gerrit-linkifyer
 // @match        https://review.crto.in/
 // @icon         https://www.google.com/s2/favicons?domain=crto.in
 // @grant        none
 // @license      Apache-2.0
+// @updateURL https://openuserjs.org/meta/kamaradclimber/My_Script.meta.js
 // @noframes
 // ==/UserScript==
 

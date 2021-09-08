@@ -33,14 +33,21 @@
         }
     }
 
-    function linkify(match, commit_hash, offset, string) {
-        return `<a href="https://review.crto.in/#/q/${commit_hash}">${commit_hash}</a>`;
+    function linkify_with_suffix(match, commit_hash, offset, string, suffix) {
+        console.log(match);
+        return `<a href="https://review.crto.in/#/q/${commit_hash}${suffix}">${commit_hash}</a>`;
     }
 
     const regex = /\b([a-f0-9]{6,})\b/g;
     const link = /<a href/gi;
 
     onCommitBoxAvailable(function(element) {
-      element.innerHTML = element.innerHTML.replaceAll(regex, linkify)
+        var suffix = '';
+        var linkify = null;
+        if (element.innerHTML.match(/auto update/gi)) {
+            suffix = '+-%22Auto+update%22';
+        }
+        linkify = function(match, commit_hash, offset, string) { return linkify_with_suffix(match, commit_hash, offset, string, suffix) };
+        element.innerHTML = element.innerHTML.replaceAll(regex, linkify);
     })
 })();
